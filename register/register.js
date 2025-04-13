@@ -121,7 +121,9 @@ async function updateContact(contactId, name, email, phone, bgcolor) {
  * Finalizes signup process with animation and redirect
  */
 function finalizeSignup() {
-  document.getElementById("sign-up-alert").classList.add("anim-sign-up");
+  const alert = document.getElementById("sign-up-alert");
+  alert.classList.remove("d_none");
+  alert.classList.add("anim-sign-up");
   resetForm();
   setTimeout(() => (window.location.href = "../index.html"), 1500);
 }

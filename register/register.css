@@ -62,6 +62,7 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   100% {
     top: 80px;
     left: 70px;
@@ -78,6 +79,7 @@ body {
   35% {
     background: #f6f7f8;
   }
+
   100% {
     background: #f6f7f800;
   }
@@ -212,6 +214,7 @@ body {
   0% {
     bottom: -20%;
   }
+
   100% {
     bottom: 50%;
   }
@@ -282,6 +285,7 @@ body {
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
     100% {
       top: 30px;
       left: 30px;
@@ -289,6 +293,7 @@ body {
       transform: translate(-0%, -0%);
     }
   }
+
   @keyframes fade-out {
     0% {
       background: #2a3647;
@@ -297,6 +302,7 @@ body {
     35% {
       background: #2a3647;
     }
+
     100% {
       background: #2a364700;
     }
@@ -310,6 +316,7 @@ body {
     30% {
       fill: #ffffff;
     }
+
     100% {
       fill: #2a3647;
     }
@@ -328,6 +335,7 @@ body {
 }
 
 @media (min-width: 320px) and (max-width: 400px) {
+
   .form,
   .div-input,
   .div-input input {
@@ -382,4 +390,8 @@ body {
 
 #idPolicy.invalid {
   border: 2px solid red;
+}
+
+.d_none {
+  display: none !important;
 }
