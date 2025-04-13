@@ -1,0 +1,226 @@
+:root {
+  --col-shadow: #2b2b2b2f;
+  --col-white: white;
+  --col-lightblue: #29abe2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #e9e9e9;
+}
+
+.sidebar {
+  position: fixed !important;
+}
+
+.navbar-wrap {
+  position: fixed;
+  top: 0;
+  left: 240px !important;
+  right: 0;
+  z-index: 9;
+}
+
+h1 {
+  padding-bottom: 50px;
+}
+
+.back {
+  position: absolute;
+  right: 0;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.back:hover {
+  background-color: #cdcdcd;
+}
+
+.help-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1440px;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+  padding: 140px 70px 40px 70px;
+}
+
+.help-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.help-content h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  letter-spacing: 1.8px;
+}
+
+.help-content p {
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin: 0;
+  margin-top: -26px;
+}
+
+.help-content h2 {
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+.help-content h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.help-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.help-content li {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-bottom: 8px;
+}
+
+.help-content a {
+  font-size: 1.3rem;
+  color: var(--col-lightblue);
+  text-decoration: none;
+}
+
+.help-content a:hover {
+  text-decoration: underline;
+}
+
+/* Jedes Vorkommen von "Join" soll die gleiche Farbe wie die E-Mail-Adresse haben */
+.help-content p,
+.help-content h1,
+.help-content h2,
+.help-content h3 {
+  color: inherit;
+}
+
+.help-content p strong,
+.help-content h1 strong,
+.help-content h2 strong,
+.help-content h3 strong {
+  color: var(--col-lightblue);
+}
+
+.help-content p span.highlight,
+.help-content h1 span.highlight,
+.help-content h2 span.highlight,
+.help-content h3 span.highlight {
+  color: var(--col-lightblue);
+  font-weight: bold;
+}
+
+address span {
+  font-weight: bolder;
+  color: var(--col-lightblue);
+}
+
+@media (max-width: 880px) {
+  .help-content h1 {
+    font-size: 3rem;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 770px) {
+  .help-content h1 {
+    font-size: 2.5rem;
+    margin-top: 32px;
+    padding: 32px;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  .help-content {
+    margin-bottom: 80px;
+  }
+
+  .help-container {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 670px) {
+  .navbar-wrap {
+    position: fixed;
+    top: 0;
+    left: 0 !important;
+    right: 0;
+    z-index: 9;
+  }
+
+  .help-container {
+    margin-top: 80px !important;
+  }
+
+  .div-navigation {
+    display: flex;
+  }
+}
+
+.menu {
+  bottom: -150px;
+}
+
+@media (max-width: 670px) {
+  .menu {
+    bottom: -200px !important;
+  }
+}
+
+/* Firefox */
+@-moz-document url-prefix() {
+  .help-content {
+    scrollbar-width: thin;
+    scrollbar-color: #a8a8a8 !important;
+  }
+}
+
+/* Chrome */
+.help-content::-webkit-scrollbar {
+  width: 6px !important;
+  height: 8px !important;
+}
+
+.help-content::-webkit-scrollbar-track {
+  background-color: transparent !important;
+}
+
+.help-content::-webkit-scrollbar-thumb {
+  background: #a8a8a8 !important;
+  border-radius: 8px !important;
+}
+
+.help-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8 !important;
+  cursor: n-resize;
+}
+
+.help-content::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+.d_none {
+  display: none;
+}

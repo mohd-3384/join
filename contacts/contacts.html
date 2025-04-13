@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../root.css" />
+    <link rel="stylesheet" href="../comp/components.css" />
+    <link rel="stylesheet" href="./contacts.css" />
+    <link rel="stylesheet" href="./addContact.css" />
+    <link rel="stylesheet" href="./contactsResponsive.css" />
+    <link rel="stylesheet" href="../comp/navbar/navbar.css" />
+    <link rel="stylesheet" href="../comp/sidebar/sidebar.css" />
+    <link
+      id="favicon-light"
+      rel="icon"
+      href="../assets/imgs/logo-black.png"
+      media="(prefers-color-scheme: light)"
+    />
+    <link
+      id="favicon-dark"
+      rel="icon"
+      href="../assets/imgs/logo-white-blue.png"
+      media="(prefers-color-scheme: dark)"
+    />
+    <title>Join - Contacts</title>
+  </head>
+
+  <body onload="initNavbar(), renderContacts()">
+    <div id="landscape-overlay"></div>
+    <div class="navbar-wrap" w3-include-html="../comp/navbar/navbar.html"></div>
+    <div w3-include-html="../comp/sidebar/sidebar.html"></div>
+    <section class="contacts-container">
+      <!-- contacts list - left side -->
+      <div class="contacts" id="contacts">
+        <button
+          class="add-new-contact-icon btn-dark"
+          onclick="openAddContact()"
+        >
+          <img src="../assets/imgs/person_add.png" alt="" />
+        </button>
+        <div class="addBtn-container">
+          <button class="add-new-contact btn-dark" onclick="openAddContact()">
+            Add new contact
+            <img src="../assets/imgs/person_add.png" alt="" />
+          </button>
+        </div>
+        <div class="contact-list" id="contactList"></div>
+      </div>
+
+      <!-- contact details - right side -->
+      <div class="contacts-details" id="contactsDetails">
+        <div class="details-head">
+          <div class="back" onclick="toggleBack()">
+            <img src="../assets/imgs/arrow-left.png" alt="" />
+          </div>
+          <div class="cont">Contacts</div>
+          <div class="side-line"></div>
+          <div class="better">Better with a team!</div>
+          <div class="vertical-line"></div>
+        </div>
+        <div class="details-content" id="contentDetails"></div>
+      </div>
+
+      <!---   add new Contact  --->
+      <div class="" id="addContactOverlay" onclick="closeAddContact()">
+        <div class="addContact" id="addContact">
+          <div class="addContact-titles">
+            <img src="../assets/imgs/logo-white-blue.png" />
+            <h1>Add Contact</h1>
+            <p class="betterP">Tasks are better with a team!</p>
+            <div class="blue-line"></div>
+          </div>
+
+          <div class="addContact-container">
+            <div class="close" onclick="closeAddContact()">x</div>
+            <div class="contact-image-container">
+              <img class="contact-image" src="../assets/imgs/add-contact.png" />
+            </div>
+            <form class="addContact-content" onsubmit="saveNewContact(event)">
+              <div class="inputs-container">
+                <div class="addContact-input">
+                  <input
+                    required
+                    id="newContactName"
+                    class="input-standard contact-name"
+                    placeholder="Name"
+                    type="text"
+                    minlength="3"
+                  />
+                  <img src="../assets/imgs/input-name.png" alt="" />
+                  <p class="input-name-error d-none" id="nameError">
+                    Der Name muss mindestens 3 Zeichen lang sein
+                  </p>
+                </div>
+                <div class="addContact-input">
+                  <input
+                    required
+                    id="newContactEmail"
+                    class="input-standard contact-email"
+                    placeholder="Email"
+                    type="email"
+                  />
+                  <img src="../assets/imgs/input-email.png" alt="" />
+                  <p class="input-email-error d-none" id="emailError">
+                    Die angegebene E-Mail ist nicht gültig
+                  </p>
+                </div>
+                <div class="addContact-input">
+                  <input
+                    required
+                    id="newContactPhone"
+                    class="input-standard contact-phone"
+                    placeholder="Phone"
+                    type="tel"
+                  />
+                  <img src="../assets/imgs/Input_Phone.png" alt="" />
+                  <p class="input-tel-error d-none" id="telError">
+                    Die angebene Telefonnummer ist nicht gültig
+                  </p>
+                </div>
+              </div>
+
+              <div class="buttons-addContact">
+                <button
+                  type="button"
+                  onclick="closeAddContact()"
+                  class="cancel btn-bright"
+                >
+                  Cancel &nbsp; X
+                </button>
+                <button type="submit" class="btn-dark">
+                  Create Contact &nbsp;
+                  <img src="../assets/imgs/check-white.png" />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="successAlert" class="success">Contact successfully created</div>
+
+      <!-- edit contact -->
+      <div id="editContactOverlay" onclick="closeEditContact()">
+        <div class="editContact" id="editContact">
+          <div class="editContact-titles">
+            <img src="../assets/imgs/logo-white-blue.png" />
+            <h1>Edit Contact</h1>
+            <div class="blue-line"></div>
+          </div>
+
+          <div class="editContact-container">
+            <div class="close" onclick="closeEditContact()">x</div>
+            <div class="contact-image-container">
+              <img class="contact-image" src="../assets/imgs/add-contact.png" />
+            </div>
+            <form
+              class="editContact-content"
+              onsubmit="saveEditedContact(event)"
+            >
+              <div class="inputs-container">
+                <div class="editContact-input">
+                  <input
+                    required
+                    id="editContactName"
+                    class="input-standard contact-name"
+                    placeholder="Name"
+                    type="text"
+                  />
+                  <img src="../assets/imgs/input-name.png" alt="" />
+                </div>
+                <div class="editContact-input">
+                  <input
+                    required
+                    id="editContactEmail"
+                    class="input-standard contact-email"
+                    placeholder="Email"
+                    type="email"
+                  />
+                  <img src="../assets/imgs/input-email.png" alt="" />
+                </div>
+                <div class="editContact-input">
+                  <input
+                    required
+                    id="editContactPhone"
+                    class="input-standard contact-phone"
+                    placeholder="Telefonnummer"
+                    type="tel"
+                  />
+                  <img src="../assets/imgs/Input_Phone.png" alt="" />
+                </div>
+              </div>
+
+              <div class="buttons-editContact">
+                <button
+                  type="button"
+                  onclick="closeEditContact()"
+                  class="cancel btn-bright"
+                >
+                  Cancel &nbsp; X
+                </button>
+                <button type="submit" class="btn-dark">
+                  Save &nbsp;
+                  <img src="../assets/imgs/check-white.png" />
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="successEditAlert" class="success">Contact saved &nbsp;</div>
+      <div id="successDeleteAlert" class="success">Contact deleted &nbsp;</div>
+    </section>
+  </body>
+
+  <script src="./contacts.js"></script>
+  <script src="./contactsTemp.js"></script>
+  <script src="./contactsOverlay.js"></script>
+  <script src="/comp/navbar/navbar.js"></script>
+  <script src="/comp/sidebar/sidebar.js"></script>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script src="/root.js"></script>
+  <script>
+    w3.includeHTML(function () {
+      setActiveNav();
+      displayInitials();
+      checkLoginButton();
+    });
+
+    function setActiveNav() {
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".nav-button").forEach((button) => {
+        const link = button.getAttribute("data-link");
+        button.classList.toggle("sidebar-active-tap", link === currentPage);
+      });
+    }
+  </script>
+</html>

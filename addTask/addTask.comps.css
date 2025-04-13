@@ -1,0 +1,194 @@
+#task-name::placeholder, 
+textarea::placeholder,
+#subtasks::placeholder,
+#due-date::placeholder {
+    color: #D7D7D7;
+    font-size: 18px;
+}
+
+#task-name,
+textarea,
+#subtasks {
+    font-size: 18px;
+}
+
+.btn-switch > img {
+    width: 16px;
+    height: 12px;
+    margin-left: 3px;
+}
+
+.clear-btn {
+    background-color: #F6F7F8 !important;
+    width: 90px;
+    height: 46px;
+    font-size: 16px !important;
+    font-weight:500!important;
+    letter-spacing: 0.2px;
+    padding: 8px !important;
+}
+
+.create-btn {
+    width: 142px;
+    height: 46px;
+    padding: 8px !important;
+    font-family: "Inter", sans-serif;
+    font-size: 16px !important;
+}
+
+.create-btn > img {
+    width: 13px;
+    height: auto;
+}
+
+.btn-div-footer {
+    display: flex;
+    width: auto;
+    justify-content: flex-end;
+    right: 0;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.dropdown-btn, .assignment-btn {
+    background-color: white;
+    text-align: left;
+    box-sizing: border-box;
+    width: 400px;
+    height: 42px;
+    border: 1px solid #D7D7D7;
+    font-family: inherit;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    padding-left: 16px !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.assignment-btn {
+    margin-bottom: 0 !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+.error {
+    border: 1px solid red !important;
+}
+  
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+  
+.dropdown-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 16px;
+}
+
+.dropdown-btn {
+    height: 42px;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    gap: 12px;
+}
+
+#task-name, 
+#description, 
+#due-date, 
+.button-container, 
+.dropdown-container {
+    margin-bottom: 32px;
+}
+
+#due-date {
+    color:  #D7D7D7;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+}
+ 
+ #due-date.has-value {
+     color: black !important;
+}
+
+.task-popup {
+    width: 250px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+    border-radius: 18px !important;
+    position: fixed;
+    bottom: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: bottom 0.5s ease-out, opacity 0.5s ease-in-out;
+}
+
+.task-popup.show {
+    bottom: 50%;
+    opacity: 1;
+}
+
+@keyframes slideIn {
+    from {
+        bottom: -100px;
+        opacity: 0;
+    }
+    to {
+        bottom: 50%;
+        opacity: 1;
+    }
+}
+  
+#contacts-list.visible {
+    display: block;
+}
+
+#selected-contacts-container {
+    display: flex;
+    padding: 4px 0px 4px 4px;
+    align-items: center;
+}
+
+#selected-contacts-container > div {
+    display: flex;
+    margin-right: 4px;
+}
+
+#task-name, #due-date, #category-container {
+    position: relative;
+}
+
+.visible {
+    display: block;
+}
+
+.avatar.additional-contacts {
+    background-color: #777 !important;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+

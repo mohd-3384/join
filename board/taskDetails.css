@@ -1,0 +1,237 @@
+#subtask-list {
+    width: 100%;
+}
+
+#due-date {
+    color: #d7d7d7;
+}
+
+#due-date.has-value {
+    color: black;
+}
+
+.form-content {
+    position: relative;
+}
+
+#taskDetailModal p {
+    padding: 16px 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    padding: 6px 16px;
+}
+
+#taskDetailOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 50;
+}
+
+#taskDetailOverlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+#taskDetailModal {
+    background: white;
+    min-height: 600px;
+    height: 70vh;
+    width: 500px;
+    max-width: 90%;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #a9a9a9 transparent;
+}
+
+#taskDetailOverlay.active #taskDetailModal {
+    transform: scale(1);
+}
+
+#taskDetailContent ul {
+    max-height: 200px;
+    overflow: auto;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #a9a9a9 transparent;
+}
+
+#closeTaskDetail {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 30px;
+    height: 30px;
+    font-size: 32px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#closeTaskDetail:hover {
+    background-color: #f7f7f7;
+    border-radius: 50%;
+}
+
+.task-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.task-detail-category {
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.task-detail-title {
+    font-size: 52px;
+    font-weight: bold;
+    margin-top: 32px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.task-detail-content {
+    margin-top: 16px;
+    font-size: 16px;
+}
+
+.task-detail-subtasks {
+    margin-top: 20px;
+}
+
+.task-detail-subtasks input {
+    margin-right: 8px;
+}
+
+.task-detail-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.subtasks-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: fit-content;
+    padding: 8px 12px;
+    border-radius: 10px;
+
+    label {
+        margin-bottom: 0;
+    }
+
+    input {
+        width: fit-content;
+        height: 16px;
+        box-shadow: none;
+        cursor: auto;
+    }
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+.line {
+    width: 1px;
+    height: 20px;
+    background-color: #ccc;
+}
+
+.btn-delete,
+.btn-edit {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 125ms;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.btn-delete:hover,
+.btn-edit:hover {
+    filter: brightness(0) saturate(100%) invert(57%) sepia(60%) saturate(583%) hue-rotate(154deg) brightness(90%) contrast(96%);
+    scale: 1.15;
+}
+
+.task-delete-confirmation {
+    position: fixed;
+    left: 50%;
+    bottom: -100px;
+    transform: translateX(-50%);
+    background: #091931;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: bottom 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.task-delete-confirmation.show {
+    bottom: 50%;
+    opacity: 1;
+}
+
+.board-container {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#taskDetailOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 50;
+}
+
+#taskDetailOverlay.active {
+    visibility: visible;
+    opacity: 1;
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../root.css" />
+  <link rel="stylesheet" href="../comp/components.css" />
+  <link rel="stylesheet" href="../comp/navbar/navbar.css" />
+  <link rel="stylesheet" href="../comp/sidebar/sidebar.css" />
+  <link rel="stylesheet" href="./privacy.css" />
+  <link id="favicon-light" rel="icon" href="../assets/imgs/logo-black.png" media="(prefers-color-scheme: light)" />
+  <link id="favicon-dark" rel="icon" href="../assets/imgs/logo-white-blue.png" media="(prefers-color-scheme: dark)" />
+  <title>Join - Privacy Policy</title>
+</head>
+
+<body>
+  <div id="landscape-overlay"></div>
+  <div class="navbar-wrap" w3-include-html="../comp/navbar/navbar.html"></div>
+  <div w3-include-html="../comp/sidebar/sidebar.html"></div>
+  <div class="privacy-container">
+    <div class="privacy-content">
+      <h1>Privacy Policy</h1>
+      <p><strong>Effective Date:</strong> April 04, 2025</p>
+
+      <h2>1. Overview</h2>
+      <p>
+        Welcome to Developer Akademie. Protecting your privacy and securing
+        your personal data is our priority. If you have any questions about
+        this policy or how we handle your information, feel free to reach out
+        to us at
+        <span><a href="https://developerakademie.com/" target="_blank">developerakademie.com</a></span>
+      </p>
+
+      <h2>2. Data We Collect</h2>
+      <p>
+        We collect personal data that you provide to us, including your name,
+        address, contact details, passwords, security information, and payment
+        details.
+      </p>
+
+      <h2>3. How We Use Your Data</h2>
+      <p>The information we gather is used to:</p>
+      <ul>
+        <li>Streamline account registration and login processes.</li>
+        <li>Send promotional and marketing content.</li>
+        <li>Ensure compliance with legal and business policies.</li>
+      </ul>
+
+      <h2>4. Data Sharing</h2>
+      <p>Your information is only shared in the following cases:</p>
+      <ul>
+        <li>Legal obligations.</li>
+        <li>Business transitions.</li>
+        <li>Affiliated companies.</li>
+        <li>Trusted business partners.</li>
+      </ul>
+
+      <h2>5. Your Rights</h2>
+      <p>
+        Depending on your location (such as the EU), you may have rights
+        regarding your personal data, including:
+      </p>
+      <ul>
+        <li>Accessing and obtaining a copy of your data.</li>
+        <li>Requesting correction or deletion.</li>
+        <li>Restricting data processing.</li>
+        <li>Data portability where applicable.</li>
+      </ul>
+
+      <h2>6. Contact Information</h2>
+      <p>
+        For inquiries or concerns about this policy, please visit our website at
+        <a href="https://developerakademie.com/" target="_blank">developerakademie.com</a>,
+        or reach out to us by mail:
+      </p>
+      <address>
+        <span class="address">Fantasy Coding</span>
+        <br />
+        <span class="address">Platzhalterstraße 4</span>
+        <br />
+        <span class="address">84541 München, Germany</span>
+      </address>
+    </div>
+  </div>
+</body>
+
+<script src="/comp/navbar/navbar.js"></script>
+<script src="./privacy.js"></script>
+<script src="/comp/sidebar/sidebar.js"></script>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<script>
+  w3.includeHTML(function () {
+    // Warte, bis alle Includes fertig sind
+    setTimeout(() => {
+      setActiveNav();
+      displayInitials();
+      checkNavigationVisibility(); // WICHTIG: Erst HIER aufrufen
+
+      // Event-Listener für spätere Änderungen
+      document.addEventListener(
+        "w3include-loaded",
+        checkNavigationVisibility
+      );
+    }, 10); // Kurze Verzögerung für sichereres Laden
+  });
+
+  function setActiveNav() {
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".nav").forEach((button) => {
+      const link = button.getAttribute("data-link");
+      button.classList.toggle("sidebar-active-tap", link === currentPage);
+    });
+  }
+</script>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adding a Task</title>
+  <link rel="stylesheet" href="/root.css" />
+  <link rel="stylesheet" type="text/css" href="/addTask/addTask.main.css" />
+  <link rel="stylesheet" href="/comp/components.css" />
+  <link rel="stylesheet" href="/comp/navbar/navbar.css" />
+  <link rel="stylesheet" href="/comp/sidebar/sidebar.css" />
+  <link rel="stylesheet" href="/addTask/addTask.responsive.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link id="favicon-light" rel="icon" href="../assets/imgs/logo-black.png" media="(prefers-color-scheme: light)" />
+  <link id="favicon-dark" rel="icon" href="../assets/imgs/logo-white-blue.png" media="(prefers-color-scheme: dark)" />
+</head>
+
+<body onload="init(); initNavbar()">
+  <div id="landscape-overlay"></div>
+  <div class="navbar-wrap" w3-include-html="/comp/navbar/navbar.html"></div>
+  <div w3-include-html="/comp/sidebar/sidebar.html"></div>
+
+  <div id="addTask-wrap">
+    <h1 class="h1-addTask">Add Task</h1>
+    <main class="main-addTask">
+      <form id="add-task-form" novalidate>
+        <div class="left-container">
+          <div class="form-group">
+            <label for="task-name">Title <span class="required">*</span></label>
+            <div class="error-message" data-error-for="task-name" style="display: none"></div>
+          </div>
+          <input id="task-name" class="input-standard" type="text" name="task-name" placeholder="Enter a title"
+            required />
+
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Enter a Description"></textarea>
+
+          <label id="assignment">Assigned to</label>
+          <div class="assignment-container" id="assignment">
+            <button class="assignment-btn no-loading" id="assignment-btn" data-container-id="contacts-container"
+              data-list-id="contacts-list" data-selected-id="selected-contacts-container">
+              Select contacts to assign
+              <span class="icon-container">
+                <img src="/assets/imgs/dropdown-black.png" alt="Dropdown Icon" id="dropdown-icon" />
+              </span>
+            </button>
+            <div id="selected-contacts-container" class="selected-contacts"></div>
+            <div id="contacts-container" class="hidden">
+              <div id="contacts-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-container">
+          <div class="form-group">
+            <label for="due-date">
+              Due Date <span class="required">*</span></label>
+            <div class="error-message" data-error-for="due-date" style="display: none"></div>
+          </div>
+
+          <div class="date-container">
+            <input class="input-standard" id="due-date" type="text" name="due-date" placeholder="dd/mm/yyyy" required />
+            <img src="/assets/imgs/calendar.png" id="calendar-icon" alt="Kalender Icon" />
+          </div>
+
+          <label>Prio</label>
+          <div class="button-container">
+            <button class="btn-switch" id="urgent" name="urgent" type="button" onclick="toggleButtons(this)">
+              Urgent <img src="/assets/imgs/urgent.png" alt="urgent-icon" />
+            </button>
+            <button class="btn-switch" id="medium" name="medium" type="button" onclick="toggleButtons(this)">
+              Medium <img src="/assets/imgs/medium.png" alt="medium-icon" />
+            </button>
+            <button class="btn-switch" id="low" name="low" type="button" onclick="toggleButtons(this)">
+              Low <img src="/assets/imgs/low.png" alt="low-icon" />
+            </button>
+          </div>
+
+          <div class="form-group">
+            <label id="category">Category <span class="required">
+                *</span></label>
+            <div class="error-message" data-error-for="selected-category" style="display: none"></div>
+          </div>
+
+          <div class="dropdown-container" id="category-container">
+            <button class="dropdown-btn" type="button" id="dropdown-btn" onclick="toggleDropdown(event)">
+              Select task category
+              <span class="icon-container">
+                <img src="/assets/imgs/dropdown-black.png" alt="Dropdown Icon" id="dropdown-icon" />
+              </span>
+            </button>
+            <div class="dropdown-options" id="dropdown-list">
+              <li onclick="selectCategory(this)" data-value="technical_task" class="no-loading">
+                Technical Task
+              </li>
+              <li onclick="selectCategory(this)" data-value="user_story" class="no-loading">
+                User Story
+              </li>
+            </div>
+          </div>
+          <input type="hidden" id="selected-category" name="selected-category" />
+
+          <label for="subtasks" id="label-subtask">Subtasks</label>
+          <div class="subtask-input-wrapper">
+            <input type="text" class="input-standard" id="subtasks" name="subtasks" placeholder="Add new subtask"
+              autocomplete="off" />
+            <img src="/assets/imgs/add-subtask.png" alt="addSubtask-icon" class="add-subtask-icon" />
+          </div>
+          <ul id="subtask-list"></ul>
+        </div>
+        <div class="text resp" style="display: none">
+          <span class="required"> *</span>
+          This field is required.
+        </div>
+      </form>
+      <section class="footer">
+        <div class="text">
+          <span class="required">*</span>This field is required.
+        </div>
+        <div class="btn-div-footer">
+          <button class="btn-bright clear-btn no-loading" onclick="clearTask()">
+            Clear
+            <span class="clear-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 30 30">
+                <line x1="0" y1="0" x2="30" y2="30" stroke-width="3" />
+                <line x1="30" y1="0" x2="0" y2="30" stroke-width="3" />
+              </svg>
+            </span>
+          </button>
+
+          <button class="btn-dark create-btn no-loading" onclick="createTask(event)" disabled type="submit">
+            Create Task
+            <img src="/assets/imgs/check-white.png" alt="check-icon" />
+          </button>
+        </div>
+      </section>
+    </main>
+    <div id="task-added-popup" class="task-popup btn-dark">
+      Task added to board
+      <img src="/assets/imgs/board-icon.svg" alt="board-icon" id="popup-icon" />
+    </div>
+  </div>
+
+  <script src="/addTask/taskHelpers.js"></script>
+  <script src="/addTask/contactsData.js"></script>
+  <script src="/addTask/date.js"></script>
+  <script src="/addTask/dropdown.js"></script>
+  <script src="/addTask/subtasks.js"></script>
+  <script src="/addTask/checkbox.js"></script>
+  <script src="/addTask/taskContact.js"></script>
+  <script src="/addTask/taskPriority.js"></script>
+  <script src="/addTask/formValidation.js"></script>
+  <script src="/addTask/createTask.js"></script>
+  <script src="/addTask/taskMain.js"></script>
+  <script src="/comp/navbar/navbar.js"></script>
+  <script src="/comp/sidebar/sidebar.js"></script>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script src="/root.js"></script>
+  <script>
+    w3.includeHTML(function () {
+      setActiveNav();
+      displayInitials();
+      checkLoginButton();
+    });
+
+    function setActiveNav() {
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".nav-button").forEach((button) => {
+        const link = button.getAttribute("data-link");
+        button.classList.toggle("sidebar-active-tap", link === currentPage);
+      });
+    }
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      push,
+    } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "DEIN_API_KEY",
+      authDomain: "DEIN_AUTH_DOMAIN",
+      databaseURL:
+        "https://join-ma-default-rtdb.europe-west1.firebasedatabase.app/",
+      projectId: "DEIN_PROJECT_ID",
+      storageBucket: "DEIN_STORAGE_BUCKET",
+      messagingSenderId: "DEIN_MESSAGING_SENDER_ID",
+      appId: "DEINE_APP_ID",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    window.saveTaskToFirebase = async function (taskData) {
+      try {
+        await push(ref(database, "tasks"), taskData);
+      } catch (error) {
+        console.error("Fehler beim Speichern des Tasks:", error);
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    flatpickr("#due-date", {
+      dateFormat: "d/m/Y",
+      allowInput: true,
+      placeholder: "dd/mm/yyyy",
+    });
+  </script>
+</body>
+
+</html>

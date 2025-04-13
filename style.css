@@ -1,0 +1,306 @@
+body {
+  background: #f6f7f8;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  position: relative;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+#Email.invalid {
+  color: red;
+}
+
+#Email.valid {
+  color: green;
+}
+
+
+
+.div-join-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background: #f6f7f8;
+  pointer-events: none;
+  animation: fade-out 1s forwards;
+}
+
+#join-logo {
+  animation: join-animation 1s forwards;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 330px;
+  z-index: 10;
+}
+
+#join-logo path {
+  fill: #2a3647;
+}
+
+#bright-blue {
+  fill: #29abe2 !important;
+}
+
+@keyframes join-animation {
+  0% {
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    top: 80px;
+    left: 70px;
+    height: 110px;
+    transform: translate(-0%, -0%);
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    background: #f6f7f8;
+  }
+
+  35% {
+    background: #f6f7f8;
+  }
+  100% {
+    background: #f6f7f800;
+  }
+}
+
+.navigate-signup {
+  position: absolute;
+  top: 80px;
+  right: 120px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 1.2rem;
+}
+
+.navigate-signup-mobile {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 1.2rem;
+  margin-top: 4rem;
+  display: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 2rem 6rem;
+  background: white;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 0px 10px -2px #2b2b2b2f;
+  box-shadow: 0px 0px 10px -2px #2b2b2b2f;
+}
+
+.form-head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.line {
+  height: 3px;
+  width: 160px;
+  background: #29abe2;
+}
+
+.div-input {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+#input-icon-visibility-off,
+#input-icon-visibility {
+  margin-top: -3px;
+  margin-right: -2px;
+  cursor: pointer;
+}
+
+.div-alert {
+  width: 420px;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  color: rgb(238, 63, 63);
+  margin-top: -20px;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.input {
+  width: 100%;
+}
+
+.grey {
+  color: rgb(172, 172, 172);
+}
+
+.div-privacy-links {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.privacy-link:hover {
+  color: #29abe2;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-buttons {
+  display: flex;
+  gap: 30px;
+}
+
+.d_none {
+  display: none !important;
+}
+
+/* Responsive */
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 670px) {
+  .form {
+    padding: 2rem 0;
+  }
+
+  .navigate-signup {
+    display: none;
+  }
+
+  .navigate-signup-mobile {
+    display: flex;
+  }
+
+  .div-join-logo {
+    animation: fade-out 1s forwards;
+  }
+
+  .form input {
+    width: 280px;
+  }
+
+  .div-alert {
+    width: 350px;
+  }
+
+  .login-buttons {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-head h1 {
+    font-size: 3.7rem;
+  }
+
+  #join-logo path {
+    fill: #ffffff;
+    animation: fade-color 1s forwards;
+  }
+
+  @keyframes join-animation {
+    0% {
+      height: 150px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    100% {
+      top: 30px;
+      left: 30px;
+      height: 80px;
+      transform: translate(-0%, -0%);
+    }
+  }
+  @keyframes fade-out {
+    0% {
+      background: #2a3647;
+    }
+
+    35% {
+      background: #2a3647;
+    }
+    100% {
+      background: #2a364700;
+    }
+  }
+
+  @keyframes fade-color {
+    0% {
+      fill: #ffffff;
+    }
+
+    30% {
+      fill: #ffffff;
+    }
+    100% {
+      fill: #2a3647;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 390px) {
+  .form,
+  .div-input,
+  .form input {
+    width: 90%;
+    gap: 16px;
+  }
+
+  .navigate-signup-mobile {
+    margin-top: 1rem;
+    gap: 20px;
+  }
+
+  .form-head {
+    height: 50px;
+  }
+}
+
+@media(min-width: 2000px) {
+  .wrapper {
+    width: 80%;
+  }
+}

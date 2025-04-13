@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Board</title>
+  <link rel="stylesheet" href="/root.css" />
+  <link rel="stylesheet" href="/comp/components.css" />
+  <link rel="stylesheet" href="/comp/navbar/navbar.css" />
+  <link rel="stylesheet" href="/comp/sidebar/sidebar.css" />
+  <link rel="stylesheet" href="/board/board.css" />
+  <link rel="stylesheet" href="./addTaskModal.css" />
+  <link rel="stylesheet" href="/addTask/addTask.main.css" />
+  <link rel="stylesheet" href="./taskDetails.css" />
+  <link rel="stylesheet" href="/board/addTaskModal.responsive.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link id="favicon-light" rel="icon" href="../assets/imgs/logo-black.png" media="(prefers-color-scheme: light)" />
+  <link id="favicon-dark" rel="icon" href="../assets/imgs/logo-white-blue.png" media="(prefers-color-scheme: dark)" />
+  <link rel="stylesheet" href="./boardResponsive.css" />
+  <link rel="stylesheet" href="./editTask.css" />
+</head>
+
+<body onload="initNavbar(); init();">
+  <div id="landscape-overlay"></div>
+  <div class="navbar-wrap" w3-include-html="/comp/navbar/navbar.html"></div>
+  <div w3-include-html="/comp/sidebar/sidebar.html"></div>
+
+  <!-- Modal und Overlay -->
+  <div id="task-overlay" class="modal-overlay" onclick="closeModal()">
+    <div id="addTaskModal" class="modal hidden">
+      <div id="modal-body">
+        <div class="modal-addTask-container">
+          <main class="main-addTask" id="main-addTask">
+            <div class="modal-header">
+              <h1 class="h1-addTask h1">Add Task</h1>
+              <button id="close-modal" class="close-btn no-loading" onclick="closeModal()">
+                &times;
+              </button>
+            </div>
+            <form class="form" name="form" onsubmit="createTask(event)">
+              <!-- Left Container -->
+              <div class="left-container">
+                <div class="form-group">
+                  <label for="task-name">Title <span class="required">*</span></label>
+                  <div class="error-message" data-error-for="task-name" style="display: none"></div>
+                </div>
+                <input id="task-name" class="input-standard" type="text" name="task-name" placeholder="Enter a title"
+                  required />
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Enter a Description"></textarea>
+
+                <label for="assignment-btn">Assigned to</label>
+                <div class="assignment-container">
+                  <button class="assignment-btn no-loading" id="assignment-btn" data-container-id="contacts-container"
+                    data-list-id="contacts-list" data-selected-id="selected-contacts-container">
+                    Select contacts to assign
+                    <span class="icon-container">
+                      <img src="/assets/imgs/dropdown-black.png" alt="Dropdown Icon" id="dropdown-icon" />
+                    </span>
+                  </button>
+                  <div id="selected-contacts-container" class="selected-contacts"></div>
+                  <div id="contacts-container" class="hidden">
+                    <div id="contacts-list"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- END left-container -->
+
+              <!-- Right Container -->
+              <div class="right-container">
+                <div class="form-group">
+                  <label for="due-date">
+                    Due Date <span class="required">*</span></label>
+                  <div class="error-message" data-error-for="due-date" style="display: none"></div>
+                </div>
+
+                <div class="date-container" id="date-container">
+                  <input type="date" class="input-standard" id="due-date" name="due-date" placeholder="dd/mm/yyyy"
+                    required />
+                  <img src="/assets/imgs/calendar.png" id="calendar-icon" class="calendar-icon" alt="Kalender Icon" />
+                </div>
+
+                <label for="medium">Prio</label>
+                <div class="button-container">
+                  <button class="btn-switch" id="urgent" name="urgent" type="button" onclick="toggleButtons(this)">
+                    Urgent
+                    <img src="/assets/imgs/urgent.png" alt="urgent-icon" />
+                  </button>
+                  <button class="btn-switch" id="medium" name="medium" type="button" onclick="toggleButtons(this)">
+                    Medium
+                    <img src="/assets/imgs/medium.png" alt="medium-icon" />
+                  </button>
+                  <button class="btn-switch" id="low" name="low" type="button" onclick="toggleButtons(this)">
+                    Low <img src="/assets/imgs/low.png" alt="low-icon" />
+                  </button>
+                </div>
+
+                <div class="form-group">
+                  <label id="category">Category <span class="required">
+                      *</span></label>
+                  <div class="error-message" data-error-for="selected-category" style="display: none"></div>
+                </div>
+                <div class="dropdown-container">
+                  <button type="button" class="dropdown-btn no-loading" onclick="toggleDropdown(event)">
+                    Select task category
+                    <span class="icon-container">
+                      <img src="/assets/imgs/dropdown-black.png" alt="Dropdown Icon" id="dropdown-icon" />
+                    </span>
+                  </button>
+                  <div class="dropdown-options" id="dropdown-list">
+                    <li onclick="selectCategory(this)" data-value="technical_task" class="no-loading">
+                      Technical Task
+                    </li>
+                    <li onclick="selectCategory(this)" data-value="user_story" class="no-loading">
+                      User Story
+                    </li>
+                  </div>
+                  <input type="hidden" id="selected-category" name="selected-category" required
+                    aria-labelledby="category-label" />
+                </div>
+
+                <label for="subtasks">Subtasks</label>
+                <div class="subtask-input-wrapper">
+                  <input type="text" class="input-standard" id="subtasks" name="subtasks" p
+                    placeholder="Add new subtask" autocomplete="off" />
+                  <img src="/assets/imgs/add-subtask.png" alt="addSubtask-icon" class="add-subtask-icon" />
+                </div>
+                <ul id="subtask-list"></ul>
+              </div>
+              <!-- END right-container -->
+            </form>
+
+            <!-- Footer Section - Now inside modal-body -->
+            <section class="footer" id="footer">
+              <div class="text">
+                <span class="required">*</span>This field is required.
+              </div>
+              <div class="btn-div-footer">
+                <button class="btn-bright clear-btn no-loading" onclick="clearTask(event)">
+                  <span id="clear">Clear</span>
+                  <span class="clear-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 30 30">
+                      <line x1="0" y1="0" x2="30" y2="30" stroke-width="3" />
+                      <line x1="30" y1="0" x2="0" y2="30" stroke-width="3" />
+                    </svg>
+                  </span>
+                </button>
+                <button class="btn-dark create-btn no-loading" onclick="createTask(event)" type="submit" disabled>
+                  <span id="create">Create Task</span>
+                  <img src="/assets/imgs/check-white.png" alt="check-icon" />
+                </button>
+              </div>
+            </section>
+            <!-- END footer section -->
+          </main>
+
+          <!-- Task Added Popup -->
+          <div id="task-added-popup" class="task-popup btn-dark">
+            Task added to board
+            <img src="/assets/imgs/board-icon.svg" alt="board-icon" id="popup-icon" />
+          </div>
+        </div>
+        <!-- END modal-addTask-container -->
+      </div>
+      <!-- END modal-body -->
+    </div>
+    <!-- END addTaskModal -->
+  </div>
+
+  <!-- Overlay for Task-Details and Edit Task Modal  -->
+  <div id="taskDetailOverlay" onclick="handleTaskDetailOverlayClick()">
+    <div id="taskDetailModal">
+      <button id="closeTaskDetail" onclick="closeTaskDetailModal()">
+        &times;
+      </button>
+      <div id="taskDetailContent"></div>
+    </div>
+
+    <div id="editTaskModal" class="edit-modal hidden">
+      <div id="edit-modal-content" class="edit-modal-content">
+        <!-- Hier wird editTaskTempl() geladen -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Haupt-Board -->
+  <div class="board-wrap">
+    <div class="board-header">
+      <div class="board-header-content">
+        <h1 class="h1-board">Board</h1>
+        <img src="/assets/imgs/plus-add-task-mobile.png" alt="" class="add-mobile" onclick="openAddTaskModal()" />
+      </div>
+      <div class="header-part-search">
+        <div class="search-input-board">
+          <input name="findTask" id="findTask" class="input-standard" placeholder="Find Task" />
+          <div class="search-divider"></div>
+          <div class="search-icon">
+            <img src="/assets/imgs/search.png" alt="search" id="search-icon" onclick="findTask()" />
+          </div>
+        </div>
+        <span id="no-results" style="display: none">No tasks found!</span>
+
+        <button id="addTask" class="btn-dark no-loading" onclick="openAddTaskModal()">
+          Add Task
+          <img src="/assets/imgs/plus-white.png" alt="add Task" id="plus-white" />
+        </button>
+      </div>
+    </div>
+    <section class="board-main">
+      <div class="toDo column" id="to-do">
+        <div class="column-header">
+          <h3 class="h3-column">To do</h3>
+          <img src="/assets/imgs/plus-button.png" alt="plus-button" class="plus-button"
+            onclick="openAddTaskModal('To do')" />
+        </div>
+        <div class="column-body" id="to-do-body">
+          <div class="no-task">No Tasks To Do</div>
+        </div>
+      </div>
+
+      <div class="inProgress column" id="in-progress">
+        <div class="column-header" id="in-progress-body">
+          <h3 class="h3-column">In progress</h3>
+          <img src="/assets/imgs/plus-button.png" alt="plus-button" class="plus-button"
+            onclick="openAddTaskModal('In progress')" />
+        </div>
+        <div class="column-body">
+          <div class="no-task">No Tasks in progress</div>
+        </div>
+      </div>
+
+      <div class="feedback column" id="awaitFeedback">
+        <div class="column-header" id="awaitFeedback-body">
+          <h3 class="h3-column">Await feedback</h3>
+          <img src="/assets/imgs/plus-button.png" alt="plus-button" class="plus-button"
+            onclick="openAddTaskModal('Await feedback')" />
+        </div>
+        <div class="column-body">
+          <div class="no-task">No Tasks await feedback</div>
+        </div>
+      </div>
+
+      <div class="done column" id="done">
+        <div class="column-header" id="done-body">
+          <h3 class="h3-column">Done</h3>
+        </div>
+        <div class="column-body">
+          <div class="no-task">No Tasks Done</div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="/addTask/taskHelpers.js"></script>
+  <script src="/addTask/contactsData.js"></script>
+  <script src="/addTask/date.js"></script>
+  <script src="/addTask/dropdown.js"></script>
+  <script src="/addTask/subtasks.js"></script>
+  <script src="/addTask/checkbox.js"></script>
+  <script src="/addTask/taskContact.js"></script>
+  <script src="/addTask/formValidation.js"></script>
+  <script src="/addTask/createTask.js"></script>
+  <script src="/addTask/taskPriority.js"></script>
+  <script src="/addTask/taskMain.js"></script>
+  <script src="/board/boardModal.js"></script>
+  <script src="/board/board.js"></script>
+  <script src="/board/searchlogic.js" defer></script>
+  <script src="/board/boardTemp.js"></script>
+  <script src="/board/taskDetail.js"></script>
+  <script src="editTaskModal.js"></script>
+  <script src="/board/editTask.js"></script>
+  <script src="/board/subtasksModal.js"></script>
+  <script src="./boardDragnDrop.js"></script>
+  <script src="/comp/navbar/navbar.js"></script>
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
+  <script src="/root.js"></script>
+  <script>
+    w3.includeHTML(function () {
+      setActiveNav();
+      displayInitials();
+      checkLoginButton();
+    });
+
+    function setActiveNav() {
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".nav-button").forEach((button) => {
+        const link = button.getAttribute("data-link");
+        button.classList.toggle("sidebar-active-tap", link === currentPage);
+      });
+    }
+  </script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import {
+      getDatabase,
+      ref,
+      push,
+    } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "DEIN_API_KEY",
+      authDomain: "DEIN_AUTH_DOMAIN",
+      databaseURL:
+        "https://join-ma-default-rtdb.europe-west1.firebasedatabase.app/",
+      projectId: "DEIN_PROJECT_ID",
+      storageBucket: "DEIN_STORAGE_BUCKET",
+      messagingSenderId: "DEIN_MESSAGING_SENDER_ID",
+      appId: "DEINE_APP_ID",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    // Hier wird die Funktion dem window-Objekt hinzugefügt
+    window.saveTaskToFirebase = async function (taskData) {
+      try {
+        await push(ref(database, "tasks"), taskData);
+      } catch (error) {
+        console.error("Fehler beim Speichern des Tasks:", error);
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Initialize Flatpickr for the first field (#due-date)
+      flatpickr("#due-date", {
+        dateFormat: "d/m/Y",
+        allowInput: true,
+        placeholder: "dd/mm/yyyy",
+        onChange: function (selectedDates, dateStr, instance) {
+          const dateInputElement = document.getElementById("due-date");
+          if (dateInputElement) {
+            dateInputElement.classList.add("has-value");
+          }
+        },
+      });
+
+      flatpickr("#edit-due-date", {
+        dateFormat: "d/m/Y",
+        allowInput: true,
+        placeholder: "dd/mm/yyyy",
+      });
+    });
+  </script>
+</body>
+
+</html>

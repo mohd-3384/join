@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background: #f6f7f8;
+  padding-left: 240px;
+}
+
+html, body {
+  height: 100vh; /* Default for most browsers */
+  height: -webkit-fill-available; /* iOS Safari fix */
+}
+
+::selection {
+  background-color: #2598cac5;
+  color: white;
+}
+
+/* Responsive Sidebar */
+
+@media (max-width: 670px) {
+  body {
+    padding-left: 0;
+  }
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter-VariableFont_opsz\,wght.ttf");
+  font-style: normal;
+}
+
+h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 4rem;
+  line-height: 6.5rem;
+  margin: 0;
+}
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-size: 3rem;
+  line-height: 4rem;
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+h4 {
+  font-family: "Inter", sans-serif;
+}
+
+h5 {
+  font-family: "Inter", sans-serif;
+}
+
+h6 {
+  font-family: "Inter", sans-serif;
+}
+
+a {
+  font-family: "Inter", sans-serif;
+  color: #29abe2;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #0295d4;
+}
+
+.nav.sidebar-active-tap {
+  background-color: #091931;
+}
+
+/* Landscape mode deactivated */
+
+#landscape-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: white;
+  z-index: 9999;
+  display: none;
+}
+
+@media (max-height: 430px) {
+  #landscape-overlay {
+    display: block;
+  }
+}

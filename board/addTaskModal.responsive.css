@@ -1,0 +1,159 @@
+@media (min-width: 670px) and (max-width: 960px) {
+    .modal {
+        padding: 0 !important;
+        height: 95%;
+        max-height: 100vh;
+        width: 65vw;
+        overflow-y: hidden;
+    }
+
+    #modal-body {
+        height: 100%;
+        width: 100%;
+        align-items: center;
+        padding: 30px;
+    }
+
+    #main-addTask {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-height: 100vh;
+        height: 100%;
+        width: 100%;
+    }
+
+    .modal-header {
+        height: 86px;
+        width: 100%;
+        max-width: 430px;
+    }
+
+    .modal-addTask-container {
+        padding: 10px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-addTask form {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        height: 85%;
+        width: 100%;
+        overflow-y: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* Internet Explorer/Edge */
+    }
+
+    .main-addTask form::-webkit-scrollbar {
+        display: none;
+    }
+
+    .left-container, .right-container, .assignment-btn, .dropdown-container {
+        width: 100%;
+        padding: 0;;
+    }
+
+    .left-container{
+        flex: 1;
+        height: 60vh;
+    }
+
+    .h1 {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+        display: block;
+        line-height: 1.2;
+        padding-bottom: 30px !important;
+        width: 200px;
+        max-width: 90%;
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
+    }
+
+    textarea, .button-container, #contacts-container, #subtasks, .dropdown-options, #contacts-list, #subtask-list {
+        min-width: 300px !important;
+        width: 100% !important;
+    }
+
+    .assignment-btn, .dropdown-btn, .dropdown-options {
+        font-size: 16px !important;
+    }
+
+    #footer {
+        max-width: 400px;
+        width: 100%;
+        background: white;
+    }
+  
+    .btn-div-footer {
+        display: flex;
+        justify-content: flex-end;
+        width: 50%;
+    }
+
+    #due-date {
+        padding: 4px;
+        font-size: 1rem;
+    }
+
+    .text {
+        display: flex;
+        align-items: flex-end;
+        font-size: 14px;
+        width: 46%;
+        padding: 0;
+    }
+
+    .create-btn, .clear-btn {
+        font-size: 14px !important;
+    }
+
+    #task-name,
+    .assignment-container,
+    .dropdown-container,
+    .assignment-btn,
+    #due-date, 
+    .button-container,
+    #urgent,
+    #medium,
+    #low,
+    .dropdown-container,
+    .dropdown-btn,
+    .subtask-input-wrapper,
+    #subtasks{
+        height: 38px;
+    }
+
+    #description {
+        height: 50px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    #clear,
+    #create {
+        display: none;
+    }
+    
+    .clear-btn,
+    .create-btn {
+        width: 60px !important;
+        height: 40px;
+    }
+}
+  
+@media only screen and (max-width: 670px) {
+    #addTaskModal,
+    .modal-overlay.active {
+        display: none;
+    }
+}
+
+

@@ -1,0 +1,299 @@
+@media (max-width:1440px) {
+    .better {
+        font-size: 22px !important;
+    }
+}
+
+@media (max-width:1360px) {
+    .details-head {
+        flex-direction: column;
+        gap: 0 !important;
+    }
+
+    .better {
+        margin-top: 8px !important;
+    }
+
+    .side-line {
+        display: none;
+    }
+
+    .vertical-line {
+        display: block;
+        margin-top: 16px;
+    }
+
+    .details-content {
+        top: 240px !important;
+    }
+}
+
+@media (max-width:1276px) {
+    .contact-name {
+        gap: 24px !important;
+    }
+
+    .contacts {
+        width: 366px !important;
+        padding-left: 8px;
+    }
+
+    .addBtn-container,
+    .contact-container {
+        width: 346px !important;
+        padding: 0;
+    }
+
+    .name-container .name {
+        font-size: 2.4rem !important;
+    }
+}
+
+@media (max-width:1250px) {
+    .name-circle-sec {
+        width: 80px;
+        height: 80px;
+    }
+
+    .addContact-titles,
+    .editContact-titles {
+        width: 300px;
+    }
+
+    .addContact-titles h1,
+    .editContact-titles h1 {
+        font-size: 3rem;
+    }
+
+    .addContact-container,
+    .editContact-container {
+        width: 590px;
+    }
+}
+
+@media (max-width:1000px) {
+    .contacts {
+        width: 100% !important;
+    }
+
+    .contacts-details {
+        display: none;
+        width: 100% !important;
+        padding: 16px;
+    }
+
+    .contacts-details.active {
+        display: flex !important;
+    }
+
+    .contacts.hidden {
+        display: none;
+    }
+
+    .details-content {
+        position: relative !important;
+        top: 0 !important;
+        right: 0 !important;
+        margin-top: 32px;
+        left: 16px;
+        flex-grow: 1;
+    }
+
+    .back {
+        display: block;
+    }
+
+    .addBtn-container,
+    .contact-container {
+        width: 80% !important;
+    }
+
+    .addContact,
+    .editContact {
+        flex-direction: column;
+        justify-content: center;
+        width: 500px;
+        height: 700px;
+        max-height: 95vh;
+    }
+
+    .addContact-titles,
+    .editContact-titles {
+        height: 500px;
+        width: 500px;
+        padding: 0;
+    }
+
+    .addContact-titles img,
+    .editContact-titles img {
+        display: none;
+    }
+
+    .addContact-titles h1,
+    .editContact-titles h1,
+    .betterP {
+        padding-left: 40px;
+        margin-top: -8px;
+    }
+
+    .blue-line {
+        margin-left: 40px;
+    }
+
+    .addContact-container,
+    .editContact-container {
+        width: 500px;
+        flex-direction: column;
+    }
+
+    .close {
+        top: -270px;
+        color: white;
+    }
+
+    .close:hover {
+        background-color: #29abe2;
+    }
+
+    .contact-image-container {
+        position: absolute;
+        top: -52px;
+    }
+
+    .addContact-content,
+    .editContact-content {
+        margin-top: 46px;
+    }
+
+    .cancel {
+        display: none;
+    }
+}
+
+@media (max-width:670px) {
+    .contacts {
+        height: calc(100vh - 210px);
+    }
+
+    .contacts-container {
+        height: calc(100vh - 160px) !important;
+    }
+
+    .add-new-contact {
+        display: none;
+    }
+
+    .add-new-contact-icon {
+        display: block;
+    }
+
+    .more-btn {
+        display: block;
+    }
+
+    #edit,
+    #delete {
+        display: none;
+    }
+
+    .addContact,
+    .editContact,
+    .addContact-container,
+    .editContact-container,
+    .addContact-titles,
+    .editContact-titles {
+        width: 430px;
+    }
+
+    .addContact-content,
+    .editContact-content {
+        width: 80%;
+    }
+
+    .input-standard {
+        width: 80%;
+    }
+}
+
+@media (max-width:440px) {
+    .cont {
+        font-size: 3rem !important;
+        margin-top: 32px;
+    }
+
+    .contact-name {
+        gap: 8px !important;
+    }
+
+    .name-circle-sec {
+        width: 60px;
+        height: 60px;
+        font-size: 24px !important;
+    }
+
+    .name-container .name {
+        font-size: 2.1rem !important;
+    }
+
+    .details-content {
+        left: 0 !important;
+    }
+
+    .details-content h2 {
+        margin-top: 0 !important;
+        font-size: 1.8rem;
+    }
+
+    .addContact,
+    .editContact {
+        z-index: -10;
+    }
+
+    .addBtn-container,
+    .contact-container {
+        width: 95% !important;
+    }
+
+    .contact-content {
+        gap: 12px;
+    }
+
+    .addContact,
+    .editContact,
+    .addContact-container,
+    .editContact-container,
+    .addContact-titles,
+    .editContact-titles {
+        width: 320px;
+    }
+
+    .addContact-titles h1,
+    .editContact-titles h1 {
+        font-size: 2.5rem;
+    }
+
+    .more-btn {
+        bottom: 0;
+        right: 0;
+    }
+
+    .edit-delete-menu {
+        bottom: 0;
+    }
+
+    .edit-delete-menu.active {
+        right: 0;
+    }
+}
+
+@media (max-width:360px) {
+    .contact-content {
+        padding: 4px 8px;
+    }
+}
+
+@media (min-width: 671px) {
+    .edit-delete-menu {
+        display: none !important;
+    }
+}

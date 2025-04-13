@@ -1,0 +1,43 @@
+.greeting-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: #f6f7f8;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #2a3647;
+  font-size: 2.5rem;
+  font-weight: 500;
+  animation: sumAnim 2s forwards;
+  display: none;
+
+  h1 {
+    color: #29abe2;
+  }
+}
+
+@keyframes sumAnim {
+  0% {
+    pointer-events: all;
+    opacity: 1;
+  }
+  70% {
+    pointer-events: all;
+    opacity: 1;
+  }
+  100% {
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+
+@media (max-width: 670px) {
+  .greeting-animation {
+    display: flex;
+  }
+}

@@ -1,0 +1,282 @@
+@media only screen and (max-width: 1000px) {
+   .main-addTask, form {
+      flex-direction: column;
+      max-height: 80vh;
+      height: 500px;
+      width: 100%;
+      min-width: 300px;
+      gap: 2.5rem;
+   }
+
+   .main-addTask form {
+      height: fit-content;
+   }
+
+   #addTask-wrap::-webkit-scrollbar {
+      display: none;
+   }
+
+   .h1-addTask {
+      font-size: 3.3rem;
+      display: block;
+      line-height: 2;
+      padding-bottom: 15px;
+   }
+
+   #addTask-wrap {
+      padding: clamp(10px, 3vw, 50px);
+      flex-grow: 1;
+      max-height: 70%;
+      overflow-y: scroll;
+      scrollbar-width: none;
+   }
+
+   .dropdown-options {
+      height: 80px;
+   }
+
+   #subtasks {
+      font-size: 16px;
+   }
+
+   .text {
+      display: none;
+   }
+
+   .resp {
+      display: block !important;
+      font-size: 14px;
+      padding-left: 8px;
+      padding: 4px;
+   }
+
+   .assignment-container, #task-name, #due-date, .assignment-btn, .dropdown-btn, #category-container, .subtask-input-wrapper {
+      min-width: 300px !important;
+      width: 100% !important;
+      height: 40px;
+   }
+
+   textarea, .button-container, #contacts-container, #subtasks, .dropdown-options, #contacts-list, #subtask-list {
+      min-width: 300px !important;
+      width: 100% !important;
+   }
+
+   .assignment-btn, .dropdown-btn, .dropdown-options {
+      font-size: 16px !important;
+   }
+
+   .right-container, .left-container {
+      padding: 0;
+      height: 50vh;
+      max-height: 80vh;
+      justify-content: flex-start;
+      width: 100%;
+      flex: 1;
+      box-sizing: border-box;
+   }
+
+   .btn-div-footer {
+      position: fixed;
+      bottom: clamp(0px, 2vh, 100px);
+      z-index: 100;
+      right: 4%;
+      width:max-content;
+   }
+
+   ::placeholder, #task-name {
+      font-size: 16px;
+   }
+
+   #due-date[data-placeholder] {
+      font-size: 16px !important;
+   }
+
+   #urgent, #medium, #low {
+      min-width: 90px;
+      width: 100%;
+      height: 44px;
+      font-size: 14px;
+   }
+
+   .btn-switch > img {
+      width: 12px;
+      height: 10px;
+   }
+
+   .contact-item {
+      white-space: nowrap;
+      gap: 10px;
+      width: 100%;
+      height: 32px;
+   }
+
+   .contact-item > .contact-name {
+      width: 60%;
+   }
+
+   .contact-name {
+      font-size: 16px;
+      flex-grow: 1;
+      padding-left: 16px;
+   }
+
+   .contact-checkbox {
+      width: 30px !important;
+   }
+
+   #contacts-container {
+      padding: 4px;
+   }
+
+   .contact-checkbox:focus {
+      box-shadow: none;
+   }
+
+   #selected-contacts-container {
+      padding-top: 4px;
+      padding-left: 4px;
+      box-sizing: border-box;
+      flex: 1;
+   }
+
+   #selected-contacts-container > div {
+      margin-right: -7px !important;
+   } 
+
+   
+}
+
+@media only screen and (min-width: 670px) {
+   #urgent, #medium, #low {
+      font-size: 16px;
+      height: 46px;
+   }
+
+   .h1-addTask {
+      padding-bottom: 30px;
+      font-size: 4rem;
+   }
+
+   label {
+      margin-bottom: 6px;
+   }
+
+   .btn-div-footer {
+      bottom: clamp(10px, 14vh, 40px);
+      right: 3%;
+   }
+
+   .resp {
+      padding-top: 80px;
+   }
+}
+
+@media only screen and (min-width: 1001px) {
+   .left-container, .right-container {
+      width: 50%;
+   }
+
+   .right-container {
+      padding-left: clamp(12px, 5vw, 120px);
+   }
+
+   #task-name, 
+   #description, 
+   #due-date, 
+   #subtasks,
+   .button-container, 
+   .dropdown-container, 
+   .assignment-container, 
+   .assignment-btn,
+   .dropdown-btn,
+   .subtask-input-wrapper {
+      width: 100%;
+   }
+
+   .footer {
+      padding-right: 0;
+      width: 100%;
+   }
+
+   .btn-div-footer {
+      gap: 24px;
+      justify-content: flex-end;
+      width: 100%;
+   }
+
+   .h1-addTask {
+      padding-bottom: 50px;
+      line-height: 5rem;
+   }
+}
+
+
+@media only screen and (max-width: 420px) {
+   .btn-div-footer {
+      bottom: clamp(10px, 15vh, 100px);
+      right: 3%;
+      width:max-content;
+   }
+
+   #contacts-list {
+      overflow-x: hidden;
+      min-width: auto !important;
+   }
+
+   .contact-item {
+      width: 100%;
+   }
+
+   .resp {
+      padding-top:100px;
+   }
+
+   .h1-addTask {
+      padding-bottom: 20px;
+   }
+}
+
+
+@media only screen and (min-width: 421px) and (max-width: 670px) {
+   .btn-div-footer {
+      bottom: clamp(30px, 15vh, 100px);
+      right: 3%;
+   }
+
+   #addTask-wrap {
+      padding-bottom: 0;
+   }
+
+   .h1-addTask {
+      padding-bottom: 10px;
+   }
+
+   .contact-checkbox-container {
+     padding-right: 12px;
+   }
+
+   #contacts-list {
+      overflow-x: hidden;
+   }
+
+   .resp {
+      padding-top:100px;
+   }
+}
+
+@media only screen and (max-device-height: 844px) {
+   input::-webkit-datetime-edit {
+      display: none;
+   }
+
+   .date-container {
+      margin-bottom: 28px;
+   }
+
+   input {
+      background-color: white;
+      color: black;
+      font-size: 16px;
+   }
+    
+}

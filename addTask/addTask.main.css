@@ -1,0 +1,373 @@
+@import url("addTask.comps.css");
+@import url("addTask.effects.css");
+@import url("addTask.subtask.css");
+
+@font-face {
+  font-family: "Inter";
+  src: url("/assets/fonts/Inter-VariableFont_opsz\,wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#addTask-wrap {
+  max-height: 86vh;
+  padding: 50px 50px 0px 70px;
+}
+
+.required {
+  color: #ff8190;
+  margin-left: -5px;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.main-addTask {
+  max-width: 900px;
+}
+
+.main-addTask form {
+  display: flex;
+  align-items: flex-start;
+  height: 50vh;
+  max-width: 1000px;
+  margin-bottom: 32px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer & Edge */
+}
+
+.main-addTask form::-webkit-scrollbar {
+  display: none;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 300px;
+  width: 50%;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 300px;
+  width: 54%;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #2a3647;
+  line-height: normal;
+}
+
+input,
+textarea {
+  box-sizing: border-box;
+  width: 400px;
+  height: 42px;
+  border: 1px solid #d7d7d7;
+  font-family: inherit;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  padding-left: 16px !important;
+  transition: var(--transition);
+}
+
+textarea {
+  height: 100px;
+  overflow-y: auto;
+  padding-top: 15px;
+  padding-left: 10px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+}
+
+select {
+  box-sizing: border-box;
+  padding-left: 16px !important;
+  width: 400px;
+  height: 42px;
+  border: 1px solid #d7d7d7;
+  font-family: inherit;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 300;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#urgent,
+#medium,
+#low {
+  width: 140px;
+  height: 44px;
+  box-sizing: border-box;
+  border: 1px solid #d7d7d7;
+  font-family: inherit;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 300;
+  background-color: white;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: inherit;
+  max-width: none;
+  min-width: 300px;
+}
+
+.text {
+  font-size: 16px;
+  padding-top: 24px;
+  width: 220px;
+}
+
+.clear-icon {
+  color: #2a3647;
+}
+
+.clear-icon>svg {
+  stroke: #2a3647;
+}
+
+.dropdown-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 77px;
+  z-index: 1;
+
+  background-color: white;
+  text-align: left;
+  box-sizing: border-box;
+  font-family: inherit;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+  margin: 0;
+  list-style: none;
+}
+
+.dropdown-container,
+.subtask-container {
+  position: relative;
+  width: 400px;
+  height: 42px;
+}
+
+#dropdown-icon {
+  width: 10px;
+  height: auto;
+}
+
+.dropdown-options>li {
+  display: block;
+  padding-left: 16px !important;
+  padding: 8px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #a9a9a9 transparent;
+}
+
+#contacts-container {
+  padding: 4px 0px 4px 4px;
+  width: 100%;
+  height: auto;
+  max-height: fit-content;
+  border: 1px solid #ccc;
+  background: white;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  border: #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 4px 8px 4px;
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: white;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+#confirm-selection {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+.assignment-container {
+  position: relative;
+  height: 42px;
+}
+
+.contact-name {
+  margin-right: auto;
+  font-family: inherit;
+  font-size: 16px;
+  flex-grow: 0;
+}
+
+.icon-container {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-checkbox {
+  --light-blue: none;
+  appearance: none;
+  outline: none;
+  box-shadow: none !important;
+  border: 2px solid #565454;
+  border-radius: 1px;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  padding: 0 !important;
+  vertical-align: middle;
+  margin: 0 !important;
+  max-width: 14px;
+  max-height: 15px;
+}
+
+.contact-checkbox-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  padding-right: 8px;
+}
+
+.contact-checkbox-container input[type="checkbox"] {
+  width: 100%;
+  /* Match container size */
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox-image {
+  width: 100%;
+  /* Same size as checkbox */
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  /* Hidden by default */
+}
+
+#calendar-icon {
+  width: 14px;
+  height: 16px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 13px;
+}
+
+.date-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.contact-item.selected {
+  background-color: #091931 !important;
+  border-radius: 8px;
+}
+
+.checkbox-image-small {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-item.selected {
+  background-color: #091931;
+  border-radius: 8px;
+}
+
+.contact-item.selected .contact-name {
+  color: white;
+}
+
+.contact-item.selected .avatar {
+  border: 2px solid white;
+}
+
+.contact-item.selected .checkbox-image {
+  filter: brightness(0) invert(1);
+  /* makes it white */
+}
+
+.extra-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #777;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+}

@@ -1,0 +1,277 @@
+#edit-calendar-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    position: absolute;
+    right: 12px;
+    top: 38px;
+}
+
+#toggle-contacts-btn {
+    height: 40px;
+}
+
+#edit-task-title,
+#edit-due-date,
+#edit-button-container,
+#edit-subtasks {
+    width: 100%;
+}
+
+#edit-subtasks {
+    padding-right: 70px;
+}
+
+#edit-subtask-wrapper {
+    display: block;
+    width: 100%;
+    margin: 0;
+    height: inherit;
+}
+
+#edit-contacts-container,
+#edit-contacts-list {
+    height: 160px;
+}
+
+#edit-contacts-list {
+    overflow-y: scroll;
+}
+
+#edit-selected-contacts-container {
+    padding-bottom: 8px;
+}
+
+.task-edit-confirmation {
+    position: fixed;
+    left: 50%;
+    bottom: -100px;
+    transform: translateX(-50%);
+    background: #091931;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: bottom 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.task-edit-confirmation.show {
+    bottom: 50%;
+    opacity: 1;
+    z-index: 5000;
+}
+
+.edit-modal-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 600px;
+    overflow-y: auto;
+    margin-top: 56px;
+    margin-bottom: 16px;
+
+    input,
+    textarea {
+        width: 97%;
+    }
+}
+
+.edit-save-btn {
+    text-align: right;
+}
+
+.edit-modal-footer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.edit-priority-container {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-prio-btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.edit-prio-btn.active {
+    border: 2px solid black;
+}
+
+/* #taskDetailModal, */
+#editTaskModal {
+    background: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+    height: 90vh;
+    max-height: 800px;
+    max-width: 506px;
+}
+
+#taskDetailOverlay.active #taskDetailModal,
+#taskDetailOverlay.active #editTaskModal {
+    transform: scale(1);
+}
+
+#edit-subtask-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px 12px;
+    max-height: 160px;
+    overflow-y: auto;
+
+    label {
+        margin-bottom: 0;
+    }
+
+    input {
+        width: fit-content;
+        height: 24px;
+        box-shadow: none;
+        cursor: auto;
+    }
+}
+
+#edit-subtask-list li:hover {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    cursor: default;
+}
+
+.small-button-container {
+    width: 97% !important;
+    margin-left: 4px;
+}
+
+.assignment-btn {
+    margin-bottom: 0 !important;
+    width: 97%;
+}
+
+#editTaskModal .btn-switch {
+    width: 140px;
+    height: 44px;
+    box-sizing: border-box;
+    border: 1px solid #D7D7D7;
+    font-family: inherit;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 300;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+#editTaskModal .btn-switch img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    transition: filter 0.2s ease-in-out;
+}
+
+#editTaskModal #edit-urgent.active {
+    background-color: rgb(255, 61, 0) !important;
+    color: white !important;
+}
+
+#editTaskModal #edit-medium.active {
+    background-color: rgb(255, 168, 0) !important;
+    color: white !important;
+}
+
+#editTaskModal #edit-low.active {
+    background-color: rgb(122, 226, 41) !important;
+    color: white !important;
+}
+
+#editTaskModal #edit-low.active img,
+#editTaskModal #edit-urgent.active img,
+#editTaskModal #edit-medium.active img {
+    filter: brightness(0) invert(1);
+}
+
+.add-subtask-icon:hover,
+.icon-container:hover {
+    background-color: #ebebed;
+    border-radius: 50%;
+}
+
+.subtask-action {
+    top: 14px;
+}
+
+#edit-selected-contacts-container .avatar {
+    margin-right: 4px;
+}
+
+.save-subtask-icon {
+    cursor: pointer;
+}
+
+.subtask-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 0px !important;
+}
+
+.subtask-text {
+    flex-grow: 1;
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.li-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.edit-icon,
+.delete-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.edit-icon:hover,
+.delete-icon:hover {
+    opacity: 1;
+}
+
+.divider1 {
+    width: 1px;
+    height: 16px;
+    background-color: #ccc;
+}
+
+.extra-avatar {
+    background-color: #777;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 400;
+}

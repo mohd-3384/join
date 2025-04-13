@@ -1,0 +1,87 @@
+@media (max-width: 1300px) {
+    .board-wrap {
+        margin-bottom: 24px;
+    }
+
+    .board-main {
+        flex-direction: column;
+        overflow-y: visible;
+    }
+
+    .task-card {
+        height: 230px;
+        max-width: 200px;
+    }
+
+    .column-body {
+        min-height: fit-content;
+        flex-direction: row;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+    }
+
+    .column {
+        min-height: fit-content;
+        margin-bottom: 0;
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+    }
+
+    .column-header {
+        position: inherit;
+    }
+}
+
+@media (max-width: 1000px) {
+    #addTask {
+        display: none;
+    }
+
+    .board-header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .board-header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .add-mobile {
+        display: block;
+        cursor: pointer;
+    }
+
+    #findTask,
+    .header-part-search,
+    .search-input-board {
+        width: 100% !important;
+    }
+
+    .edit-modal-container {
+        scrollbar-width: none;
+    }
+
+    .board-wrap {
+        padding: 40px 24px 0 24px;
+    }
+}
+
+@media (max-width:670px) {
+    .column {
+        z-index: 0;
+    }
+
+    #editTaskModal {
+        margin: 0 14px;
+    }
+
+    .board-wrap {
+        margin-bottom: 100px;
+    }
+}
