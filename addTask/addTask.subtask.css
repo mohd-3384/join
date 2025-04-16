@@ -40,8 +40,7 @@
 #subtask-list {
     margin: 0;
     width: 100%;
-    min-height: 200px;
-    max-height: 400px;
+    max-height: 160px;
     overflow-y: auto;
 }
 
