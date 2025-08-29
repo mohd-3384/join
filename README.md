@@ -1,0 +1,1 @@
+Join is a collaborative Kanban board for task management. Organize tasks via drag-and-drop, filter and search; comments and statuses support team workflows. Firebase provides authentication and real-time sync so changes are visible instantly. The responsive UI is designed for fast, clear interaction.
